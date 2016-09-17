@@ -1,0 +1,43 @@
+
+
+CREATE DATABASE runbroker;
+USE runbroker;
+
+CREATE TABLE user_info (
+idx INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+id VARCHAR(20) UNIQUE,
+password VARCHAR(20),
+numWin INT default 0,
+numLose INT default 0
+);
+
+CREATE TABLE rate_info(
+num_unutychan_win INT default 0,
+nnum_unitychan_lose INT default 0,
+num_toonbot_win INT default 0,
+num_toonbot_lose INT default 0,
+num_knight_win INT default 0,
+num_knight_lose INT default 0,
+num_teddy_win INT default 0,
+num_teddy_lose INT default 0
+)
+
+
+INSERT INTO user_info (id, password)
+VALUES ("a", "b");
+
+INSERT INTO rate_info() VALUES ();
+
+SELECT numWin, numLose FROM user_info
+WHERE id = "a";
+
+SELECT * FROM user_info
+WHERE id = "a";
+
+UPDATE user_info 
+SET numLose = numLose+1
+WHERE id = "a";
+
+UPDATE user_info 
+SET numWin = numWin+1
+WHERE id = "a";

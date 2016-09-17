@@ -1,0 +1,70 @@
+#1. 일단 타일, 벽 띄우기 ->이전 코드 참조
+#. 다른사람캐릭터가 안움직인다? (클라문제?)
+#. Startposition에러가 있나?
+#. 서버측에서 게임 종료시 waitroom으로 이동
+#. 클라측에서 "
+#. 클라측에서 게임 중 유저가 빠져났을때 처리
+
+#. unknown error.
+ption: Argument is out of range.
+Parameter name: index
+System.Collections.Generic.List`1[UnityEngine.Sprite].get_Item (Int32 index) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Collections.Generic/List.cs:633)
+UIManager.popImage () (at Assets/Script/UIManager.cs:69)
+PacketProcess.ShowPlayTime (FreeNet.CPacket msg) (at Assets/Script/PacketProcess.cs:61)
+PacketProcess.on_recv (FreeNet.CPacket msg) (at Assets/Script/PacketProcess.cs:49)
+UnityEngine.Component:SendMessage(String, Object)
+NetworkManager:on_message(CPacket) (at Assets/Script/NetworkManager.cs:85)
+FreeNetUnity.CFreeNetUnityService:Update() (at Assets/FreeNet/CFreeNetUnityService.cs:95)
+pop image index가 초과?? 게임을 한번 진행한 서버였다.. 패킷이 두번 왔남..
+
+#. 3명째부터 기존의 플레이어를 다 받지 못함..
+
+#. 중간에 나가면? 레디버튼이 안눌림..
+
+#. DB 로그인 체크
+
+#. 로그인시 이미 게임에 참가한 플레이어라면 들어올 수 없게 체크
+
+#. 게임 결과 DB에 적용
+
+#. 스킬 끝나는 시점이 작동 안됨
+
+#. 애니메이션 중 안움직이게
+
+#. UI Anchor로 비율 조절
+
+#. 로딩 끝나면 게임 시작하게끔 조절 (Pause 활용 Time.timescale = 0.0f;멈춤 1.0f동작)
+아니면.. Update있는 곳마다 isGameStart가 false면 진행 안하도록 설정?
+gameManager -> uiMAnager 순 start진행
+gamemanager에서 패킷 보내면 맵 변하는 게 없어지지 않을까?
+
+#. http://egloos.zum.com/dra784/v/11151064
+
+http://hyunity3d.tistory.com/535
+http://devkorea.co.kr/bbs/board.php?bo_table=m03_qna&wr_id=10989
+
+
+#. connect에 disconnect 작동하도록 dll수정 필요할듯
+
+experienced bug
++유니티는 hierachy에 입력한 값을 스크립트 변수에 바로 할당하는 것보다 우선으로 세팅한다 (by 패킷이 너무 많이 생성되는 현상)
++파티클 시스템의 좌표를 local로 지정해야 오브젝트를 따라서 움직인다.
++List의Remove()가 잘 작동하지 않았다..?
+
+#. maptile 개수를 주면 서버에서 아이템을 뜨게 할 수 있을듯?.. rigibody추가하고 하늘에서 떨어지게끔? 
+#. wall에는 걍 텍스쳐 발라버리고 색 변화 안되게끔하는게..?
+#. black을 다른 색으로 바꿀까..
+#. 게임중 다 나가고 1명나갔을때 이긴것으로 처리되게 변경
+#. 3D Text로 model에 플레이어 id 추가되게끔 (색도 주자)
+#. 모델, 플레이어 프리팹의 포지션을 유니티에서 y값 조정해주면 초기 터치하고 들어가는 버그 없앨 수 있을 듯
+#. 포트 고정, tab키 가능하게
+#. 파란 원의 정체 by 교수님
+#. 책에서 network_manager확인
+#. draw 처리 //확인필요
+#. retry 게임에서 한명이 나가면 버튼이 안먹음?
+#. 5명 들어가면 어케되는지 확인필요
+#. 게임 룸 나가면 대기 방에서 어케 되는지 확인 필요
+#. 중간에 빠지는 곳이 있다
+#. startposition에 y값을 좀 줘서 떨구면 두 클라간 차이가 없어지지 않을까
+#. 속도 빨라지면 좌표값 못움직일라나?
+#. 게임이 Active한 상태가 아니라도 움직이게 할 수 없을까? by 교수님

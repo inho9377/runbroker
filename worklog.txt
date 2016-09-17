@@ -1,0 +1,10 @@
+8/14
+조작방식 변경 (마우스 미사용) 3h
+
+8/15
+disconnect처리 (확인필요) 0.5h
+비 connect 처리(client) 0.2h
+미니맵구현 1h
+
+8/20
+moveit! 5h
