@@ -68,14 +68,11 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
             {
                 player_models[idx] = Instantiate(ReturnPlayerModel(player.playerType)) as GameObject;
                 Helper.Instance.CopyComponent<Player>(player, player_models[idx]);
-                //player_models[idx].AddComponent<Skill>();
                 Vector3 player_startPos = startPosList[UserManager.player_seq[player.player_index]];
 
                 player_start_locatonDict.Add(player.player_index, player_startPos);
                 
                 idx++;
-                //if (player.player_index != UserManager.controller_index)
-                //    player.CameraOff();
             }
 
 
