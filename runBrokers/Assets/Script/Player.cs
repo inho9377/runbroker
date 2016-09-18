@@ -46,8 +46,6 @@ public class Player : MonoBehaviour
     public int skillState;
     public void SetInit()
     {
-        //playerColor = Common.PlayerColor.RED;
-        //playerType = Common.PlayerType.UNITY_CHAN;
         if (player_index == UserManager.controller_index)
             isController = true;
 
@@ -64,7 +62,6 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         skill = GetComponent<Skill>();
-        //skill = new Skill();
         LogManager.log("player start!");
         targetPos = transform.position;
         while (characterController.isGrounded)
@@ -106,15 +103,7 @@ public class Player : MonoBehaviour
     {
         if (!GameManager.Instance.isGameStart)
             return;
-        //if (characterController.isGrounded)
-        //   gravity = 0;
 
-        //if(gravity != 0)
-        //   characterController.Move(new Vector3(transform.position.x, gravity*Time.deltaTime, transform.position.y));
-        /*if(!characterController.isGrounded)
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z);
-        }*/
         if (isController)
             return ;
 
@@ -124,7 +113,7 @@ public class Player : MonoBehaviour
 
         transform.LookAt(targetPos);
         float moveFloat = Time.deltaTime * moveSpeed;
-        //this.transform.position = Vector3.Lerp(transform.position, targetPos, moveFloat);
+
         this.transform.position = Vector3.MoveTowards(transform.position, targetPos, moveFloat);
     }
 
@@ -156,7 +145,6 @@ public class Player : MonoBehaviour
         if (isUp)
             characterController.Move(transform.forward * moveSpeed * Time.deltaTime);
         else
-            //characterController.Move(transform.forward * moveSpeed * Time.deltaTime);
             return;
     }
     public void Rotate(bool isRightSpin)

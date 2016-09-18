@@ -25,8 +25,6 @@ public class PacketProcess : CSingletonMonobehaviour<PacketProcess>
 
         this.map_manager = GameObject.Find("MapManager").GetComponent<MapManager>();
         this.game_manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //test = GameObject.FindGameObjectWithTag("Controller");
-        //this.ui_manager = GameObject.FindGameObjectWithTag("Controller").GetComponentInChildren<UIManager>();
 
         Process_Func_Dict = new Dictionary<PROTOCOL, MyDelegate>();
         Process_Func_Dict.Add(PROTOCOL.GAME_START, error);
@@ -44,7 +42,7 @@ public class PacketProcess : CSingletonMonobehaviour<PacketProcess>
     public void uiSet()
     {
         this.ui_manager = GameObject.FindGameObjectWithTag("Controller").GetComponentInChildren<UIManager>();
-        //map_manager.AllAreaReset();
+
     }
 
     
@@ -69,13 +67,11 @@ public class PacketProcess : CSingletonMonobehaviour<PacketProcess>
     {
         SoundManager.Instance.PlaySfx(game_manager.AlertSound);
         int playTime = msg.pop_int16();
-        //int leftTime = Common.playTimeSec - playTime;
         ui_manager.popImage();
     }
 
     void TimeOver(CPacket msg)
     {
-        //int playTime = msg.pop_int16();
 
         if (UserManager.UserList.Count == 1)
         {
@@ -170,7 +166,6 @@ public class PacketProcess : CSingletonMonobehaviour<PacketProcess>
     {
         byte index = msg.pop_byte();
         UserManager.Instance.FindPlayer(index).UseSkillDirect();
-        //ui_manager.PopText(UserManager.Instance.FindPlayer(index).Id + "Is Use Skill!");
     }
 
     void TeleportUse(CPacket msg)

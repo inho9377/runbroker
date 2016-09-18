@@ -13,7 +13,6 @@ public class PopUp : MonoBehaviour
     void Awake()
     {
         gameObject.SetActive(false);
-        // setDisable();
     }
 
     public void Pop(Sprite popupImage, float duration_popup_set = 1.5f)
@@ -47,8 +46,7 @@ public class PopUp : MonoBehaviour
         }
 
     }
-
-    // 오브젝트 Disable
+    
     void setDisable()
     {
         gameObject.transform.localScale = new Vector3(0, 0, 0);

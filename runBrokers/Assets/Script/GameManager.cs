@@ -37,7 +37,6 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
     public bool isResult = false;
 
     public bool isGameStart = false;
-	// Use this for initialization
 	void Start()
     {
         isResult = false;
@@ -49,9 +48,6 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
         player_modelDict = new Dictionary<byte, GameObject>();
 
         SetPlayer();
-        //MapManager.Instance.AllAreaReset();
-        //InputManager.Instance.SetInit();
-
 
         CPacket msg = CPacket.create((short)PROTOCOL.LOADING_COMPLETE_REQ);
         NetworkManager.Instance.send(msg);
@@ -94,7 +90,6 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
         {
             UserManager.Instance.AddPlayer(player_model.GetComponent<Player>());
             player_model.GetComponent<Player>().playerObject = player_model;
-            //player_modelDict.Add(player_model.GetComponent<Player>().player_index, player_model);
         }
 
         UserManager.Instance.SetPlayerStartLocation(startPosList);
@@ -150,17 +145,7 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
                 return null;
         }
     }
-    // Update is called once per frame
-   /* void Update ()
-    {
-        CurrrentTime += Time.deltaTime;
 
-        if (CurrrentTime > LimitTimeSec)
-        {
-
-        }
-            //winTeamColor = CheckWinTeamColor();
-	}*/
 
     public bool isWin(Common.PlayerColor win_team_color)
     {
@@ -170,12 +155,6 @@ public class GameManager : CSingletonMonobehaviour<GameManager> {
             return false;
     }
 
-    void CheckWinTeamColor()
-    {
-
-        //return MapManager.Instance.ReturnTeamColorNum();
-
-    }
     public void GameSet()
     {
         isResult = true;

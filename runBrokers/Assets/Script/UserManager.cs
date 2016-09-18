@@ -32,9 +32,7 @@ public class UserManager : CSingletonMonobehaviour<UserManager>
     {
         foreach(Player user in UserList)
         {
-            //user.transform.position = new Vector3(startPosList[player_seq[user.player_index]].x, 2.0f, startPosList[player_seq[user.player_index]].z);
             user.transform.position = startPosList[player_seq[user.player_index]];
-            //user.transform.position.y = 2.0f;
             user.targetPos = user.transform.position;
 
             MapManager.Instance.FindAreaByPosition(startPosList[player_seq[user.player_index]]).ChangeAreaColor(user.playerColor, user.player_index);

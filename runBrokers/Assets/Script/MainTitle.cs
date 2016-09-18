@@ -38,9 +38,7 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
     public GameObject popText;
 
     public bool isLoginScene = false;
-
-
-    // Use this for initialization
+    
     void Start()
     {
         Console.WriteLine("start");
@@ -55,23 +53,8 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
         this.network_manager.message_receiver = this;
 
         SoundManager.Instance.PlaySfx(titleBackgroundSound, true);
-        //network_manager.connect("127.0.0.1", "7979");
         idInputField.GetComponent<InputField>().ActivateInputField();
-
-        /*
-        this.user_state = USER_STATE.NOT_CONNECTED;
-        //this.bg = Resources.Load("images/title_blue") as Texture;
-        //this.battle_room = GameObject.Find("BattleRoom").GetComponent<BattleRoom>();
-        //this.battle_room.gameObject.SetActive(false);
-
-        this.network_manager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
-
-        //this.waiting_img = Resources.Load("images/waiting") as Texture;
-        LogManager.log("TitleStart");
-
-        this.user_state = USER_STATE.NOT_CONNECTED;
-        //enter();
-  */
+        
     }
 
     void Update()
@@ -104,7 +87,6 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
 
     public void enterWaitRoom()
     {
-        //StopCoroutine("after_connected");
         LogManager.log("id : " + inputId);
         LogManager.log("ip : " + inputIP);
         LogManager.log("Port : " + inputPort);
@@ -115,40 +97,6 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
         network_manager.send(msg);
 
     }
-    /*
-    /// <summary>
-    /// 서버에 접속된 이후에 처리할 루프.
-    /// 마우스 입력이 들어오면 ENTER_GAME_ROOM_REQ프로토콜을 요청하고 
-    /// 중복 요청을 방지하기 위해서 현재 코루틴을 중지 시킨다.
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator after_connected()
-    {
-        // CBattleRoom의 게임오버 상태에서 마우스 입력을 통해 메인 화면으로 넘어오도록 되어 있는데,
-        // 한 프레임 내에서 이 코루틴이 실행될 경우 아직 마우스 입력이 남아있는것으로 판단되어
-        // 메인 화면으로 돌아오자 마자 ENTER_GAME_ROOM_REQ패킷을 보내는 일이 발생한다.
-        // 따라서 강제로 한 프레임을 건너뛰어 다음 프레임부터 코루틴의 내용이 수행될 수 있도록 한다.
-        yield return new WaitForEndOfFrame();
-
-        while (true)
-        {
-            /*if (this.user_state == USER_STATE.CONNECTED)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    this.user_state = USER_STATE.WAITING_MATCHING;
-
-                    CPacket msg = CPacket.create((short)PROTOCOL.ENTER_GAME_ROOM_REQ);
-                    this.network_manager.send(msg);
-
-                 //   StopCoroutine("after_connected");
-                }
-            }
-
-            yield return 0;
-        }
-    }*/
-
 
     public void IpInput(string IP)
     {
@@ -172,10 +120,6 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
     public void ConnectButton()
     {
         SoundManager.Instance.PlaySfx(ButtonClickSound);
-       // if (this.network_manager.is_connected())
-         //   return;
-        //if (isConnect)
-          //  return;
         if (!this.network_manager.is_connected())
         {
             if (!this.network_manager.connect(inputIP, inputPort))
@@ -225,12 +169,9 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
     }
 
     
-    /// <summary>
-    /// 서버에 접속이 완료되면 호출됨.
-    /// </summary>
     public void on_connected()
     {
-     //   enterWaitRoom();
+
     }
 
 
@@ -238,15 +179,8 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
     {
         SoundManager.Instance.Pause();
     }
-
-    /// <summary>
-    /// 패킷을 수신 했을 때 호출됨.
-    /// </summary>
-    /// <param name="protocol"></param>
-    /// <param name="msg"></param>
     public void on_recv(CPacket msg)
     {
-        // 제일 먼저 프로토콜 아이디를 꺼내온다.
         PROTOCOL protocol_id = (PROTOCOL)msg.pop_protocol_id();
 
         switch (protocol_id)
@@ -269,7 +203,6 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
                     int player_number = msg.pop_int16();
                     UserManager.Instance.AddPlayer(index, inputId);
                     UserManager.controller_index = index;
-                    //Todo : I는 처음 부분에 저장되나?
 
                     for (int i=0; i<player_number; i++)
                     {
@@ -288,12 +221,7 @@ public class MainTitle : CSingletonMonobehaviour<MainTitle>
                     }
                     UserManager.Instance.FindController().SetInit();
                     SceneManager.LoadScene("wait");
-                   // Application.LoadLevel("wait");  
-
-
-                    //this.battle_room.gameObject.SetActive(true);
-                    //this.battle_room.start_loading(player_index);
-                    //  gameObject.SetActive(false);
+                    
                 }
                 break;
 

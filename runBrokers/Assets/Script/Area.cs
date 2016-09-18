@@ -25,7 +25,6 @@ public class Area : MonoBehaviour {
     public bool isItemPoint = false;
     
 	
-	// Update is called once per frame
 	void Update () {
 
         if (!GameManager.Instance.isGameStart)
@@ -84,24 +83,7 @@ public class Area : MonoBehaviour {
         
 		this.area_color = change_color;
         changeColor = Helper.Instance.ReturnColor(change_color);
-
-        /*foreach (MeshRenderer material in gameObject.GetComponentsInChildren<MeshRenderer>())
-        {
-            if (changeColor == material.material.color)
-                return;
-            LogManager.log("changecolor");
-            material.material.color = Color.Lerp(material.material.color, changeColor, Time.time);
-        }
-
-        /*
-        foreach (MeshRenderer material in gameObject.GetComponentsInChildren<MeshRenderer>())
-        {
-            LogManager.log("changecolor");
-            material.material.color = changeColor;
-        }*/
-
-
-
+        
     }
 
     void ChangeKingtLocation()

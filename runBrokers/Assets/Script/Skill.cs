@@ -156,7 +156,6 @@ public class Skill : MonoBehaviour {
     {
         if (!isUseOk)
         {
-            //ui_manager.PopText("Not Yet Used Skill CoolTime");
             return;
         }
 
@@ -192,7 +191,6 @@ public class Skill : MonoBehaviour {
 
     void SkillReset()
     {
-        //skillEffect.Stop();
         switch (playerType)
         {
             case Common.PlayerType.TOON_BOT:
@@ -246,7 +244,6 @@ public class Skill : MonoBehaviour {
 
         playerScript.moveSpeed += unityChanSkillSpeed;
         playerScript.turnSpeed += unityChanSkillTurnSpeed;
-        //playerScript.UseSkill();
     }
 
     void KnightSkillActive()
@@ -271,7 +268,6 @@ public class Skill : MonoBehaviour {
                
 
             user.isColorDefault = true;
-            //user.playerColor = Common.PlayerColor.DEFAULT;
         }
     }
 

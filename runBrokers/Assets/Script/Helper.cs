@@ -86,23 +86,8 @@ public class Helper : CSingleton<Helper>
 
         return (Common.PlayerType)nextType;
     }
-
-    public void DescendingDictValue<key>(Dictionary<key, int> dict)
-    {
-        
-    }
-
-    public void DictDescendingOrderByValue<key>(ref Dictionary<key, int> dict)
-    {
-        /*dict.Clear();
-        
-        //foreach (var keyPair in items)
-        {
-            dict.Add(keyPair.Key, keyPair.Value);
-        }*/
-
-    }
-
+    
+    
     public T CopyComponent<T>(T original, GameObject destination) where T : Component
     {
         System.Type type = original.GetType();

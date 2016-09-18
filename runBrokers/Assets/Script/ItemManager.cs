@@ -7,7 +7,6 @@ public class ItemManager : CSingletonMonobehaviour<ItemManager> {
 
     public List<GameObject> itemList;
     
-	// Use this for initialization
 	void Start ()
     {
         itemList = GameObject.FindGameObjectsWithTag("Item").ToList<GameObject>();

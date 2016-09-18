@@ -6,17 +6,13 @@ using Logic;
 public class SoundManager : CSingletonMonobehaviour<SoundManager> {
 
     public AudioSource audioSource;
-
-    //public AudioClip audioClip;
-
-
+    
     public AudioClip unityChanSound;
     public AudioClip knightSound;
     public AudioClip toonbotSound;
     public AudioClip tededySound;
 
     
-    // Use this for initialization
     void Start ()
     {
         DontDestroyOnLoad(this);

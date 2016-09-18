@@ -9,7 +9,6 @@ public class rulebook : MonoBehaviour {
 
     public List<Sprite> ruleImageList;
     int currentPage;
-	// Update is called once per frame
 
         void Start()
     {

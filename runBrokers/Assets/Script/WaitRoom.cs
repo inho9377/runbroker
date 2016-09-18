@@ -93,8 +93,7 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
         playerTypeTextDict = new Dictionary<byte, GameObject>();
 
           playerUiSeqDict = new Dictionary<byte, int>();
-
-       // playerUiSeqDict.Add(UserManager.controller_index, ui_index++);
+        
         foreach (Player user in UserManager.UserList)
         {
             playerColorDict.Add(user.player_index, playerColors[ui_index]);
@@ -139,7 +138,6 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
 
         Common.PlayerColor next_color = Helper.Instance.nextColor(UserManager.Instance.FindController().playerColor);
         CPacket msg = CPacket.create((short)PROTOCOL.COLOR_CHANGE_REQ);
-       // msg.push(UserManager.Instance.controller_index);
         msg.push((byte)next_color);
         network_manager.send(msg);
     }
@@ -150,8 +148,7 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
         UserManager.Instance.FindPlayer(player_index).playerColor = color;
 
         colorM.GetComponent<MeshRenderer>().material.color = Helper.Instance.ReturnColor( color);
-
-        //playerColorTextDict[player_index].GetComponent<SpriteRenderer>().sprite = ReturnColorTextSprite(color);
+        
         playerColorTextDict[player_index].GetComponent<Image>().sprite = ReturnColorTextSprite(color);
     }
 
@@ -162,14 +159,10 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
             return;
         Common.PlayerType next_type = Helper.Instance.nextType(UserManager.Instance.FindController().playerType);
         CPacket msg = CPacket.create((short)PROTOCOL.TYPE_CHANGE_REQ);
-        //msg.push(UserManager.Instance.controller_index);
         msg.push((byte)next_type);
         network_manager.send(msg);
 
         SoundManager.Instance.PlayCharSound(next_type);
-       // playerTypes[0].GetComponent<SpriteRenderer>().sprite = TOON_BOT_image;
-        //패킷전송
-        //PlayerJobChange(UserManager.player_index);
     }
 
     void AnimationStart(Common.PlayerType type)
@@ -206,7 +199,6 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
         UserManager.Instance.FindPlayer(player_index).playerType = type;
 
         imageM.GetComponentInChildren<MeshRenderer>().material.mainTexture = ReturnTypeImage(type);
-        //imageM.GetComponent<SpriteRenderer>().sprite = ReturnTypeImage(type);
         AnimationStart(type);
         playerTypeTextDict[player_index].GetComponent<Image>().sprite = ReturnTypeTextSprite(type);
     }
@@ -222,8 +214,6 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
     {
         if (UserManager.Instance.FindController().isReady == 1)
             return;
-        //if (isReady)
-        //  return;
         SoundManager.Instance.PlaySfx(ReadySound);
         CPacket msg = CPacket.create((short)PROTOCOL.READY_REQ);
         msg.push(UserManager.controller_index);
@@ -369,7 +359,6 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
 
     public void on_recv(CPacket msg)
     {
-        // 제일 먼저 프로토콜 아이디를 꺼내온다.
         PROTOCOL protocol_id = (PROTOCOL)msg.pop_protocol_id();
 
         switch (protocol_id)
@@ -459,10 +448,6 @@ public class WaitRoom : CSingletonMonobehaviour<WaitRoom> {
                     SceneManager.LoadScene("game");
                     
            
-                    //Ready waitroom return
-                    
-                    
-                    //SceneManager.LoadScene("game");
                     break;
                 }
 

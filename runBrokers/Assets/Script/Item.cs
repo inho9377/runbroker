@@ -91,6 +91,5 @@ public class Item : MonoBehaviour
 
         player.moveSpeed += 0.5f;
         player.turnSpeed += 0.4f;
-       // accelatorParticle.Simulate(2.0f);
     }
 }

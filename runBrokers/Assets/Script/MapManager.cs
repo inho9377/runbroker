@@ -17,10 +17,8 @@ public class MapManager : CSingletonMonobehaviour<MapManager>
 
     void Start()
     {
-        //확인필요
         areaList = GameObject.FindGameObjectsWithTag("area").ToList<GameObject>();
-
-        //   CreateMap();
+        
         FillWallTexture();
     }
 
@@ -42,23 +40,7 @@ public class MapManager : CSingletonMonobehaviour<MapManager>
 
         return null;
     }
-
-    /*void CreateMap(int width_num = 10, int height_num = 8)
-    {
-        width_area_num = width_num;
-        height_area_num = height_num;
-        int idx = 0;
-
-        for(int width=0; width<width_area_num; width++)
-        {
-            for(int height=0; height < height_area_num; height++ )
-            {
-               GameObject area = Instantiate(area_object) as GameObject;
-               idx++;
-            }
-        }
-    }
-    */
+    
     
     public List<Vector3> GetStartPosition()
     {
@@ -92,8 +74,6 @@ public class MapManager : CSingletonMonobehaviour<MapManager>
 
             colorDict[area.area_color]++;
         }
-
-        //Helper.Instance.DictDescendingOrderByValue<Common.PlayerColor>(ref colorDict);
         
         return colorDict;
     }
